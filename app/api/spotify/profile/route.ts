@@ -1,0 +1,1 @@
+import { NextResponse } from "next/server"; import { spotifyFetch } from "@/lib/spotify/client"; import type { SpotifyUser } from "@/types/spotify"; export async function GET(){try{return NextResponse.json(await spotifyFetch<SpotifyUser>("/me"));}catch(e){return NextResponse.json({error:e instanceof Error?e.message:"Unable to load profile"},{status:401});}}
